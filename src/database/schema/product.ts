@@ -2,8 +2,7 @@ import mongooes from "../connection";
 
 export const product = new mongooes.Schema({
     name: String,
-    quanity: Number,
-    description: String,
+    quantityInStock: Number,
     price: Number,
 });
 
