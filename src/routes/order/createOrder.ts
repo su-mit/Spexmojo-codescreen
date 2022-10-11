@@ -7,6 +7,7 @@ const createOrder: RequestHandler = async (req: Request, res: Response) => {
     const orderDeatils = req.body?.orderDeatils;
 
     const finalProductList = await prepareFinalOrder(orderDeatils.products);
+    await updateProductQuanities(finalProductList);
 
     try {
         const newOrder = await order.create({
@@ -22,19 +23,24 @@ const createOrder: RequestHandler = async (req: Request, res: Response) => {
 };
 
 const prepareFinalOrder = async (products: any) => {
-    const finalProductList = products.map(async (product: any) => {
+    const finalProductList = products.filter(async (product: any) => {
         if (await isProductAvailable(product.productId, product.quantity)) {
-            await updateProductQuanity(product.productId, product.quantity);
-
-            return product;
+            return true;
         } else {
             console.log(
                 `Product ${product.productId} is out of stock. Hence, skipping`
             );
+            return false;
         }
     });
 
     return finalProductList;
+};
+
+const updateProductQuanities = async (products: any) => {
+    products.forEach(async (product: any) => {
+        await updateProductQuanity(product.productId, product.quantity);
+    });
 };
 
 export default createOrder;
