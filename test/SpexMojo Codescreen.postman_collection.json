@@ -1,0 +1,253 @@
+{
+	"info": {
+		"_postman_id": "de665bb1-bc07-4095-a94e-fcd822676768",
+		"name": "SpexMojo Codescreen",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userDeatils\":{\n        \"name\": \"Test user 4 \",\n        \"email\": \"testUser4@spexmojo.com\",\n        \"password\": \"test@123\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/createUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"createUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userDeatils\":{\n        \"id\" : \"634538583b6c70c24fadc142\",\n        \"name\": \"Test user 3 Updated\",\n        \"email\": \"testUser3@spexmojo.com\",\n        \"password\": \"test@123\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/listAllUsers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"listAllUsers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userDeatils\":{\n        \"_id\" : \"63453823c0ff08f5f9a91543\",\n        \"name\": \"Test user 1 \",\n        \"email\": \"testUser1@spexmojo.com\",\n        \"password\": \"test@123\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/updateUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"updateUser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Create product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productDeatils\":{\n        \"name\": \"Test product 5\",\n        \"quantityInStock\": 0,\n        \"price\": 65\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/product/createProduct",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"createProduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userDeatils\":{\n        \"id\" : \"634538583b6c70c24fadc142\",\n        \"name\": \"Test user 3 Updated\",\n        \"email\": \"testUser3@spexmojo.com\",\n        \"password\": \"test@123\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/product/listAllProducts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"listAllProducts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productDeatils\":{\n        \"_id\": \"63453f9aa6e3d251385dbcec\",\n        \"name\": \"Test product 4\",\n        \"quantityInStock\": 100,\n        \"price\": 10\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/product/updateProduct",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"updateProduct"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"orderDeatils\":{\n        \"userId\" : \"6345384b3b6c70c24fadc140\",\n        \"products\":[{\n            \"productId\": \"63453dd9c7ae609d8bc44552\",\n            \"quantity\": 5,\n            \"price\": 95\n            },\n            {\n            \"productId\": \"63453f9aa6e3d251385dbcec\",\n            \"quantity\": 12,\n            \"price\": 20\n            }\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/order/createOrder",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"createOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/order/listAllOrder",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"listAllOrder"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
