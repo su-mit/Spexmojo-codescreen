@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "devStart": "nodemon server/server.ts"
+    "start": "nodemon src/server/server.ts"
   },
   "dependencies": {
     "@types/express": "^4.17.14",

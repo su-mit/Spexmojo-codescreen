@@ -8,6 +8,7 @@ const createProduct: RequestHandler = async (req: Request, res: Response) => {
     try {
         const newProduct = await product.create(productDeatils);
         console.log(newProduct);
+        res.status(201).send(newProduct);
     } catch (error: any) {
         console.log(error);
     }

@@ -7,10 +7,11 @@ const createProduct: RequestHandler = async (req: Request, res: Response) => {
 
     try {
         const updatedProduct = await product.replaceOne(
-            { id: productDeatils.id },
+            { _id: productDeatils._id },
             productDeatils
         );
         console.log(updatedProduct);
+        res.status(200).json(updatedProduct);
     } catch (error: any) {
         console.log(error);
     }

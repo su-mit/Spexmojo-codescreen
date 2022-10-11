@@ -4,7 +4,7 @@ const product = require("../../database/schema/product");
 
 export const findProduct = async (productId: string) => {
     try {
-        return await product.find({ id: productId });
+        return await product.findOne({ _id: productId });
     } catch (error: any) {
         console.log(error);
     }
@@ -21,10 +21,12 @@ export const productInStock = async (productId: string) => {
 
 export const isProductAvailable = async (
     productId: string,
-    numberOfOrders: number
+    numberOfProductOrdered: number
 ) => {
     try {
-        return (await productInStock(productId)) >= numberOfOrders;
+        const productQuantity = await productInStock(productId);
+
+        return productQuantity >= numberOfProductOrdered;
     } catch (error: any) {
         console.log(error);
     }
@@ -32,17 +34,23 @@ export const isProductAvailable = async (
 
 export const updateProductQuanity = async (
     productId: string,
-    numberOfOrders: number
+    numberOfProductOrdered: number
 ) => {
     try {
         const numberOfProducts = await productInStock(productId);
 
-        const updateProductQuanity = await product.updateOne(
-            { id: productId },
-            { $set: { quantityInStock: numberOfProducts - numberOfOrders } }
+        const updatedProduct = await product.updateOne(
+            { _id: productId },
+            {
+                $set: {
+                    quantityInStock: numberOfProducts - numberOfProductOrdered,
+                },
+            }
         );
         console.log(
-            `For product ${productId} now the quantity in stock is ${updateProductQuanity}`
+            `Product ${productId} previous stock was ${numberOfProducts}, update stock is ${
+                numberOfProducts - numberOfProductOrdered
+            }`
         );
     } catch (error: any) {
         console.log(error);

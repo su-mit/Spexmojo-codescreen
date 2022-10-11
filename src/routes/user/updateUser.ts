@@ -7,13 +7,13 @@ const updateUser: RequestHandler = async (req: Request, res: Response) => {
 
     try {
         const updatedUser = await user.replaceOne(
-            { id: userDeatils.id },
+            { _id: userDeatils._id },
             userDeatils
         );
         console.log(updatedUser);
+        res.status(200);
     } catch (error: any) {
         console.log(error);
     }
 };
-
 export default updateUser;

@@ -6,7 +6,7 @@ const order = require("../../database/schema/order");
 const createOrder: RequestHandler = async (req: Request, res: Response) => {
     const orderDeatils = req.body?.orderDeatils;
 
-    const finalProductList = prepareFinalOrder(orderDeatils.products);
+    const finalProductList = await prepareFinalOrder(orderDeatils.products);
 
     try {
         const newOrder = await order.create({
@@ -15,25 +15,26 @@ const createOrder: RequestHandler = async (req: Request, res: Response) => {
             products: finalProductList,
         });
         console.log(newOrder);
+        res.status(201).json(newOrder);
     } catch (error: any) {
         console.log(error);
     }
 };
 
 const prepareFinalOrder = async (products: any) => {
-    const finalProduct = products.forEach(async (product) => {
-        if (await isProductAvailable(product.id, product.quantity)) {
-            await updateProductQuanity(product.id, product.quantity);
+    const finalProductList = products.map(async (product: any) => {
+        if (await isProductAvailable(product.productId, product.quantity)) {
+            await updateProductQuanity(product.productId, product.quantity);
 
-            return true;
+            return product;
         } else {
             console.log(
-                `Product ${product.name} is out of stock. Hence, skipping ${product.name}}`
+                `Product ${product.productId} is out of stock. Hence, skipping`
             );
         }
     });
 
-    return finalProduct;
+    return finalProductList;
 };
 
 export default createOrder;
