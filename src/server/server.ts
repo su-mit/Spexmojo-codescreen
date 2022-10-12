@@ -24,6 +24,7 @@ cron.schedule("0 0 0 * * *", async function () {
     const dateTimeStamp = new Date().toISOString();
     console.log(
         await listOrderByDate(
+            // Generating date substring frm dateTimeStamp
             dateTimeStamp.substring(0, dateTimeStamp.indexOf("T"))
         )
     );

@@ -8,7 +8,7 @@ const createUser: RequestHandler = async (req: Request, res: Response) => {
     try {
         const newUser = await user.create(userDeatils);
         console.log(newUser);
-        res.status(200).send(newUser);
+        res.status(201).send(newUser);
     } catch (error: any) {
         console.log(error);
     }

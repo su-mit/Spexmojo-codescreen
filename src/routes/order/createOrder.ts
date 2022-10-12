@@ -10,7 +10,7 @@ const createOrder: RequestHandler = async (req: Request, res: Response) => {
         orderDeatils.products
     );
     if (availableProducts.length > 0) {
-        // await updateProductQuanities(availableProducts);
+        await updateProductQuanities(availableProducts);
 
         try {
             const newOrder = await order.create({
@@ -48,12 +48,12 @@ const prepareFinalOrder = async (products: any) => {
     let outOfStockProducts = new Array();
 
     for (let product of products) {
-        await isProductAvailable(product.productId, product.quantity).then(
-            (result) => {
-                if (result) availableProducts.push(product);
-                else outOfStockProducts.push(product.productId);
-            }
-        );
+        const { productId, quantity } = product;
+
+        await isProductAvailable(productId, quantity).then((result) => {
+            if (result) availableProducts.push(product);
+            else outOfStockProducts.push(productId);
+        });
     }
 
     return { availableProducts, outOfStockProducts };

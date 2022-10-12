@@ -11,7 +11,7 @@ const createProduct: RequestHandler = async (req: Request, res: Response) => {
             productDeatils
         );
         console.log(updatedProduct);
-        res.status(200).json(updatedProduct);
+        res.status(200).json({ message: "Updated product successfully" });
     } catch (error: any) {
         console.log(error);
     }

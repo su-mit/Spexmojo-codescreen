@@ -11,7 +11,7 @@ const updateUser: RequestHandler = async (req: Request, res: Response) => {
             userDeatils
         );
         console.log(updatedUser);
-        res.status(200);
+        res.status(200).json({ message: "Updated user successfully" });
     } catch (error: any) {
         console.log(error);
     }
