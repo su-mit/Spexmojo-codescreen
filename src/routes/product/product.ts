@@ -21,15 +21,11 @@ export const productInStock = async (productId: string) => {
 
 export const isProductAvailable = async (
     productId: string,
-    numberOfProductOrdered: number
+    numberOfProductOrdered: number = 1
 ) => {
-    try {
-        const productQuantity = await productInStock(productId);
+    const productQuantity = await productInStock(productId);
 
-        return productQuantity >= numberOfProductOrdered;
-    } catch (error: any) {
-        console.log(error);
-    }
+    return productQuantity >= numberOfProductOrdered;
 };
 
 export const updateProductQuanity = async (

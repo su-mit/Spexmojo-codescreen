@@ -3,6 +3,7 @@ import { config } from "dotenv";
 import bodyParser from "body-parser";
 import router from "../routes/index";
 import cron from "node-cron";
+import { listOrderByDate } from "../routes/order/order";
 
 /*
   BASIC SETUP
@@ -18,9 +19,14 @@ app.listen(PORT, () => {
     console.info(`Server started at port ${PORT}`);
 });
 
-// Cron fro 1 day Time: 0 0 0 * * *
-cron.schedule("*/10 * * * * *", function () {
-    console.log("running a task every 10 second");
+// Cron Job 1 day Time: 0 0 0 * * *
+cron.schedule("0 0 0 * * *", async function () {
+    const dateTimeStamp = new Date().toISOString();
+    console.log(
+        await listOrderByDate(
+            dateTimeStamp.substring(0, dateTimeStamp.indexOf("T"))
+        )
+    );
 });
 
 /*
