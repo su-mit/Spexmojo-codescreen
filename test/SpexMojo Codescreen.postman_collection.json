@@ -171,7 +171,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"productDeatils\":{\n        \"_id\": \"63453f9aa6e3d251385dbcec\",\n        \"name\": \"Test product 4\",\n        \"quantityInStock\": 100,\n        \"price\": 10\n    }\n}",
+							"raw": "{\n    \"productDeatils\":{\n        \"_id\": \"63453dd9c7ae609d8bc44552\",\n        \"name\": \"Test product 1\",\n        \"quantityInStock\": 90000,\n        \"price\": 100\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -199,13 +199,71 @@
 			"name": "Order",
 			"item": [
 				{
-					"name": "New Request",
+					"name": "Partiall products are/is  available",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"orderDeatils\":{\n        \"userId\" : \"6345384b3b6c70c24fadc140\",\n        \"products\":[{\n            \"productId\": \"63453dd9c7ae609d8bc44552\",\n            \"quantity\": 5,\n            \"price\": 95\n            },\n            {\n            \"productId\": \"63453f9aa6e3d251385dbcec\",\n            \"quantity\": 12,\n            \"price\": 20\n            }\n        ]\n    }\n}",
+							"raw": "{\n    \"orderDeatils\":{\n        \"userId\" : \"634538583b6c70c24fadc142\",\n        \"products\":[{\n            \"productId\": \"63453dd9c7ae609d8bc44552\",\n            \"quantity\": 10,\n            \"price\": 95\n            },\n            {\n            \"productId\": \"63453f9aa6e3d251385dbcec\",\n            \"quantity\": 12,\n            \"price\": 20\n            }\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/order/createOrder",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"createOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "None products are/is available",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"orderDeatils\":{\n        \"userId\" : \"634538583b6c70c24fadc142\",\n        \"products\":[\n            {\n            \"productId\": \"63453f9aa6e3d251385dbcec\",\n            \"quantity\": 12,\n            \"price\": 20\n            }\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/order/createOrder",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"order",
+								"createOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All products are/is available",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"orderDeatils\":{\n        \"userId\" : \"634538583b6c70c24fadc142\",\n        \"products\":[{\n            \"productId\": \"63453dd9c7ae609d8bc44552\",\n            \"quantity\": 10,\n            \"price\": 95\n            }\n        ]\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
