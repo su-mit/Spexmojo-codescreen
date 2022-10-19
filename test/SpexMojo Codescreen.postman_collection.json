@@ -76,7 +76,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"userDeatils\":{\n        \"_id\": \"6346bff518b55a96fd8a8114\",\n        \"name\": \"Test user 4\",\n        \"email\": \"testUser4@spexmojo.com\",\n        \"password\": \"test@123\"\n    }\n}",
+							"raw": "{\n    \"userDeatils\":{\n        \"_id\": \"63453823c0ff08f5f9a91543\",\n        \"payload\": {\n        \"name\": \"Change 3\",\n        \"email\": \"testUser1@spexmojo.com\",\n        \"password\": \"test@123\"}\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -110,7 +110,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"productDeatils\":{\n        \"name\": \"Test product 5\",\n        \"quantityInStock\": 0,\n        \"price\": 99\n    }\n}",
+							"raw": "{\n    \"productDeatils\":{\n        \"name\": \"Test product 99\",\n        \"quantityInStock\": 89,\n        \"price\": 10\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -159,6 +159,38 @@
 							"path": [
 								"product",
 								"listAllProducts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get product with specific id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\" : \"findProductWithId\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/product/findProductWithId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"product",
+								"findProductWithId"
 							]
 						}
 					},
